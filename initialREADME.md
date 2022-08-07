@@ -1,3 +1,26 @@
+## Hilton Dev Assessment
+
+For this code assessment, we expect you to make the changes listed in the `Deliverables` sections and then email us the link to your codesandbox instance that has your changes. (As soon as you make a change and save it, it will fork this project and create a unique url for you).
+
+## Setup
+
+You need to sign up for an OpenWeather API key. Instructions are here: https://openweathermap.org/appid
+
+After you get your API, add that as API_KEY in city-weather.tsx
+
+## Mock bug report
+
+Steps to reproduce:
+
+1. Type a valid US city in the "Weather Search" box
+1. Press {enter}
+
+Expected results
+User should see the current weather results for that city
+
+Actual Results:
+App crashes
+
 ## Deliverable 1:
 
 1. Fix the bug
