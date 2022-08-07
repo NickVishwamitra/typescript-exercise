@@ -1,22 +1,22 @@
 // eslint-disable @typescript-eslint/no-use-before-define
 import { Component } from "react";
+import { WeatherResult } from "../types";
 
-// to get api key: https://openweathermap.org/appid
-const API_KEY = "<insert your api key here>";
+const API_KEY = "10c0b6df21950cd958c5e7e2087814fc";
 
 interface CityWeatherProps {
   city: string;
 }
 
 interface CityWeatherState {
-  weatherResult: any;
+  weatherResult: WeatherResult | null;
 }
 
 export class CityWeather extends Component<CityWeatherProps, CityWeatherState> {
-  public constructor(props) {
+  public constructor(props: CityWeatherProps) {
     super(props);
     this.state = {
-      weatherResult: null
+      weatherResult: null,
     };
   }
 
@@ -32,7 +32,9 @@ export class CityWeather extends Component<CityWeatherProps, CityWeatherState> {
   public render() {
     const { city } = this.props;
     const { weatherResult } = this.state;
-
+    if (!weatherResult) {
+      return <div>Loading...</div>;
+    }
     return (
       <div>
         <h1>{city}</h1>
