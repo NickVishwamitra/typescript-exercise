@@ -1,11 +1,11 @@
 # Deliverable 1:
 
-## The Problem:
+### The Problem:
 
 - Ignored type errors and not using best practices
 - Component not catching and displaying loading state
 
-## The Fix:
+### The Fix:
 
 1. Changed formData implementation to use state for gathering input
 2. Returned a loading label while component retrieves weather information
@@ -17,14 +17,14 @@
 
 🚧 For the purpose of the assessment, I duplicated the index page for [Deliverable 2](/pages/deliverable2.tsx)
 
-## Additional Changes:
+### Additional Changes:
 
 - API key placed in .env file to avoid hardcoding
 - Changed folder structure to follow [recommended structure for tests](__tests__/pages/deliverable2.test.tsx)
 
 - Error handling
 
-## Known Compromises:
+### Known Compromises:
 
 1. The API key that is supposed to be private is currently exposed to the browser.
    <br><br/>
