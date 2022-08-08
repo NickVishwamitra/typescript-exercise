@@ -19,10 +19,12 @@ export default function IndexPage() {
         className=" flex flex-col sm:flex-col md:flex-row items-center justify-center"
         onSubmit={async (e) => {
           e.preventDefault();
+          // Using environment variables to avoid hardcoding the API key
           const validCity = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
           ).then(async (res) => res.json());
 
+          // Check if the city is valid
           city
             ? validCity.cod === "404"
               ? alert("Invalid City")

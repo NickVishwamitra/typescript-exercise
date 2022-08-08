@@ -1,23 +1,41 @@
-## Deliverable 1:
+# Deliverable 1:
 
-1. Fix the bug
-   - Treating this like a bug ticket, identify the bug in the application and provide a fix.
-2. Talk about your changes
-   - Write a short description about what was the underlying cause of the bug and how you fixed it
+## The Problem:
 
-## Deliverable 2:
+- Ignored type errors and not using best practices
+- Component not catching and displaying loading state
 
-1. Create a city-weather-refactor.tsx file, in which you refactor the city-weather component to use react hooks rather than React.Component. Incorporate the following:
+## The Fix:
 
-   1. Match the design
-      - A designer has provided a comp on how this app should look (see design.png)
-        - To match the design you may need to use different fields that are retuned from teh openweathermap API. For example, the weather condition three digit code can be [mapped to the icons here](https://openweathermap.org/weather-conditions)
-      - Tailwindcss is installed and configured for you
-   2. Improve web accessibility
-      - Ensure that clicking on the label "Weather Search" puts focus into the text-input.
-      - Make sure any loading states are correctly announced to a screen reader
-   3. Make the tests better
-      - There was a test written for this feature but it clearly didn't catch the bug, make the test better (you can open a new terminal in the bottom right of code sandbox and `yarn test`)
+1. Changed formData implementation to use state for gathering input
+2. Returned a loading label while component retrieves weather information
+3. Added typings for [weather result](/types.ts)
 
-2. Talk about your changes
-   - For the refactor and other accompanying tasks, include any other thoughts, assumptions, or known compromises in how you approached the work.
+<br></br>
+
+# Deliverable 2:
+
+🚧 For the purpose of the assessment, I duplicated the index page for [Deliverable 2](/pages/deliverable2.tsx)
+
+## Additional Changes:
+
+- API key placed in .env file to avoid hardcoding
+- Changed folder structure to follow [recommended structure for tests](__tests__/pages/deliverable2.test.tsx)
+
+- Error handling
+
+## Known Compromises:
+
+1. The API key that is supposed to be private is currently exposed to the browser.
+   <br><br/>
+   ![API Key Visible](networkReq.png)
+   <br><br/>
+
+   - To prevent this, a Next.js API route should be used to make the request to openweather instead of through the client. [This is the created route](/pages/api/weather.ts)
+   - An example request to this route would look like this:
+
+     ```tsx
+     fetch(`/api/weather?city=${props.city}`).then(async (r) =>
+       setWeatherResult(await r.json())
+     );
+     ```

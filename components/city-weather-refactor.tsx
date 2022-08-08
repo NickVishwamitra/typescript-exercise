@@ -10,6 +10,7 @@ const CityWeatherRefactor = (props: CityWeatherProps) => {
     null
   );
   useEffect(() => {
+    // Using environment variables to avoid hardcoding the API key
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
     ).then(async (r) => setWeatherResult(await r.json()));
