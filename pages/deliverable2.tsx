@@ -19,9 +19,9 @@ export default function IndexPage() {
         className=" flex flex-col sm:flex-col md:flex-row items-center justify-center"
         onSubmit={async (e) => {
           e.preventDefault();
-          const validCity = await fetch(`/api/weather?city=${city}`).then(
-            async (res) => res.json()
-          );
+          const validCity = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+          ).then(async (res) => res.json());
 
           city
             ? validCity.cod === "404"

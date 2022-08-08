@@ -10,9 +10,9 @@ const CityWeatherRefactor = (props: CityWeatherProps) => {
     null
   );
   useEffect(() => {
-    fetch(`/api/weather?city=${props.city}`).then(async (r) =>
-      setWeatherResult(await r.json())
-    );
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+    ).then(async (r) => setWeatherResult(await r.json()));
   }, [props.city]);
   if (!weatherResult) {
     return <div>Loading... </div>;
